@@ -14,4 +14,6 @@ public abstract class Vehicle {
     public void start() {
         engine.start();
     }
+
+    public void drive() {}
 }
