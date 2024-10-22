@@ -1,10 +1,8 @@
-import shapes.Circle;
-import shapes.Rectangle;
-import shapes.Shape;
-import shapes.Triangle;
+import shapes.*;
 import vehicles.Car;
 import vehicles.Motorcycle;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -34,6 +32,30 @@ public class Main {
 
         for (Shape shape : shapes) {
             System.out.println(shape.getClass().getSimpleName() + " area = " + shape.calculateArea());
+        }
+
+
+        List<Shape3D> shapes3d = new ArrayList<>(List.of(new Cube(5)));
+
+        for (Shape shape : shapes) {
+
+            if (shape instanceof Circle circle) {
+                shapes3d.add(new Sphere(circle));
+                shapes3d.add(new Cylinder(circle, 5));
+                shapes3d.add(new Cone(circle, 5));
+            }
+
+            else {
+                shapes3d.add(new Prism(shape, 5));
+                shapes3d.add(new Pyramid(shape, 5));
+            }
+
+        }
+
+        for (Shape3D shape3d : shapes3d) {
+            System.out.println(shape3d.getClass().getSimpleName() + " with " +
+                    shape3d.getBase().getClass().getSimpleName() + " base | Volume = " +
+                    shape3d.calculateVolume());
         }
     }
 }
