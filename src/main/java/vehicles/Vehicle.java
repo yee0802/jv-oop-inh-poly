@@ -16,4 +16,6 @@ public abstract class Vehicle {
     }
 
     public void drive() {}
+
+    protected abstract void accelerate();
 }
